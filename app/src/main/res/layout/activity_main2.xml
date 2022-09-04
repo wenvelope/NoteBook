@@ -11,12 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity2"
-        android:background="#87CEEB">
+        android:background="#FFB1CFE5">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="#87D7EB"
+            android:background="#0A195F"
             android:id="@+id/bottom_navi"
             app:menu="@menu/bottom_navi"
             app:layout_constraintStart_toStartOf="parent"

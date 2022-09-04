@@ -57,6 +57,10 @@ class AddFragment : Fragment() {
                 }
                 mModel.insertMessage(MessageBean(title,taskMessage,dateOfMonth+"月"+dateOfDay+"日",false))
             }
+            mBinding.apply {
+                editTask.setText("")
+                editTitle.setText("")
+            }
             Toast.makeText(MyApplication.context,"添加成功",Toast.LENGTH_SHORT).show()
         }
 

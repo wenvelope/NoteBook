@@ -82,6 +82,7 @@ class MainFragment : Fragment() {
             mModel.messageData.observe(this){
                 mModel.messageList.clear()
                 mModel.messageList.addAll(it)
+                mModel.messageList.sortBy { it -> it.dateTime}
                 mBinding.taskListView.adapter?.notifyDataSetChanged()
             }
         }
