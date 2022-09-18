@@ -1,5 +1,6 @@
 package com.example.linyizhi.adapter
 
+import android.media.audiofx.DynamicsProcessing
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,7 @@ class MessageAdapter(private val list: List<MessageBean>):RecyclerView.Adapter<M
         fun bind(position: Int){
             mBinding.title.text = list[position].title
             mBinding.date.text = list[position].dateTime
+            mBinding.finishButton.isEnabled = !list[position].isFinished
             mBinding.title.setOnClickListener {
                 mOnItemClickListener?.onClick(mBinding.root,position)
             }

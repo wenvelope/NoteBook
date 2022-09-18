@@ -51,15 +51,16 @@ class AddFragment : Fragment() {
             val taskMessage = mBinding.editTask.text.toString()
             val dateOfMonth = mBinding.timePicker.getPicker(DateTimeConfig.MONTH)?.value.toString()
             val dateOfDay = mBinding.timePicker.getPicker(DateTimeConfig.DAY)?.value.toString()
-            lifecycleScope.launch(Dispatchers.IO){
-                if(title.isEmpty()){
-                    Toast.makeText(MyApplication.context,"标题不能为空",Toast.LENGTH_SHORT).show()
+            if(title.isEmpty()){
+                Toast.makeText(MyApplication.context,"标题不能为空",Toast.LENGTH_SHORT).show()
+            }else{
+                lifecycleScope.launch(Dispatchers.IO){
+                    mModel.insertMessage(MessageBean(title,taskMessage,dateOfMonth+"月"+dateOfDay+"日",false))
                 }
-                mModel.insertMessage(MessageBean(title,taskMessage,dateOfMonth+"月"+dateOfDay+"日",false))
-            }
-            mBinding.apply {
-                editTask.setText("")
-                editTitle.setText("")
+                mBinding.apply {
+                    editTask.setText("")
+                    editTitle.setText("")
+                }
             }
             Toast.makeText(MyApplication.context,"添加成功",Toast.LENGTH_SHORT).show()
         }

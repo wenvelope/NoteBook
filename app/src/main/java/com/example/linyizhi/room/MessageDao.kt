@@ -17,6 +17,6 @@ interface MessageDao {
     @Update
     fun updateMessage(messageBean: MessageBean)
 
-    @Query("select * from messages where message like '%'||(:string)||'%' and isFinished = 0 or title like '%'||(:string)||'%' ")
+    @Query("select * from messages where (message like '%'||(:string)||'%' or title like '%'||(:string)||'%') and isFinished = 0 ")
     fun selectSpecifiedMessages(string: String):Flow<List<MessageBean>>
 }

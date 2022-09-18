@@ -65,13 +65,13 @@ class MainFragment : Fragment() {
             })
             setOnButtonClickListener(object :MessageAdapter.OnItemClickListener{
                 override fun onClick(view: View, position: Int) {
-                    view.isEnabled = false
+                    view.isEnabled=false
                     val handler = Handler(Looper.getMainLooper())
+                    val message = mModel.messageList[position]
+                    message.isFinished = true
                     handler.postDelayed({
                         lifecycleScope.launch(Dispatchers.IO){
-                            mModel.updateMessage(mModel.messageList[position].apply {
-                                isFinished = true
-                            })
+                            mModel.updateMessage(message)
                         }
                     },1000)
                 }
